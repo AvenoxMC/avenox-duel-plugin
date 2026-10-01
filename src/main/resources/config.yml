@@ -1,0 +1,123 @@
+# ==========================================================
+#                   Duels - configuration
+# ==========================================================
+# Kits     : kits.yml   (ou en jeu avec /dkit)
+# Arènes   : arenas.yml (ou en jeu avec /arena)
+# Messages : messages.yml
+# Lobby    : /duels setlobby (enregistré dans lobby.yml)
+
+lobby:
+  # Téléporter au lobby à chaque connexion
+  teleport-on-join: true
+  # Mode de jeu au lobby (SURVIVAL, ADVENTURE...)
+  gamemode: ADVENTURE
+  # Protections du lobby (les admins en créatif ne sont pas concernés)
+  disable-damage: true
+  disable-hunger: true
+  protect-blocks: true
+  lock-inventory: true
+  # Objets de la hotbar du lobby (clic droit). Clés disponibles :
+  # queue, spectate, party-create, party-menu, party-leave, leave-queue, stats
+  give-items: true
+  items:
+    queue:
+      slot: 0
+      material: DIAMOND_SWORD
+      name: '&b&lJouer &7(clic droit)'
+      lore: ['&7Choisis un mode de jeu', '&7et trouve un adversaire.']
+    spectate:
+      slot: 1
+      material: COMPASS
+      name: '&e&lRegarder un match &7(clic droit)'
+      lore: ['&7Liste des matchs en cours.']
+    party-create:
+      slot: 4
+      material: NAME_TAG
+      name: '&d&lCréer une party &7(clic droit)'
+      lore: ['&7Joue avec tes amis', '&7en FFA ou en équipes.']
+    party-menu:
+      slot: 0
+      material: NETHER_STAR
+      name: '&d&lMenu de la party &7(clic droit)'
+      lore: ['&7FFA, équipes, défier une party...']
+    party-leave:
+      slot: 8
+      material: INK_SACK
+      data: 1
+      name: '&c&lQuitter la party &7(clic droit)'
+    leave-queue:
+      slot: 8
+      material: INK_SACK
+      data: 1
+      name: '&c&lQuitter la file &7(clic droit)'
+    stats:
+      slot: 8
+      material: BOOK
+      name: '&a&lStatistiques &7(clic droit)'
+
+worlds:
+  # Préfixe des mondes modèles (un par arène, déchargés hors édition)
+  template-prefix: 'duels_tpl_'
+  # Préfixe des copies jetables chargées pendant un match
+  instance-prefix: 'duels_match_'
+  # Nombre max de matchs simultanés sur une même arène (par défaut, modifiable par arène)
+  default-max-instances: 5
+  # Nombre max de copies de maps chargées en même temps sur le serveur (0 = illimité)
+  max-loaded-instances: 30
+  time: 6000
+  difficulty: NORMAL
+  fire-spread: false
+
+schematics:
+  # Dossiers scannés (relatifs au dossier du serveur) pour les .schem / .schematic
+  folders:
+    - 'plugins/Duels/schematics'
+    - 'plugins/WorldEdit/schematics'
+    - 'plugins/FastAsyncWorldEdit/schematics'
+  # Hauteur du bas de la map lors d'un /arena fromschem
+  paste-y: 64
+  # Le "vide" mortel de l'arène est placé à paste-y - void-below
+  void-below: 5
+  # Blocs posés par tick (baisser si le serveur lag pendant le collage)
+  blocks-per-tick: 40000
+  # Taille max d'une schématique (largeur x hauteur x longueur)
+  max-volume: 16000000
+
+match:
+  # Compte à rebours avant le combat (secondes)
+  countdown: 5
+  # Délai avant le retour au lobby après la victoire (secondes)
+  end-delay: 4
+  # Durée max d'un combat en secondes (0 = illimité) -> égalité
+  max-duration: 900
+  lightning-on-death: true
+  allow-item-drop: true
+  announce-spectators: true
+  # Commandes autorisées pendant un match / en spectateur (sans le /)
+  allowed-commands: [leave, quitter, msg, tell, r, w, party, p, stats]
+
+queue:
+  # Fréquence de recherche d'arènes libres pour les joueurs en file (ticks)
+  check-interval: 40
+
+duel:
+  # Durée de validité d'un défi (secondes)
+  request-expire: 60
+  # Laisser choisir la map lors d'un défi / combat de party
+  arena-select: true
+
+party:
+  max-size: 16
+  invite-expire: 60
+  leave-on-quit: true
+  # Préfixe pour parler dans le chat de party (ex : "@salut")
+  chat-prefix: '@'
+
+stats:
+  # Sauvegarde automatique (secondes)
+  save-interval: 300
+
+gui:
+  filler: true
+  # Couleur des vitres de remplissage (data de STAINED_GLASS_PANE)
+  filler-color: 7

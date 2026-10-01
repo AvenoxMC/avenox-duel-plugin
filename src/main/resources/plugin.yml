@@ -1,0 +1,45 @@
+name: Duels
+version: 1.0.0
+main: fr.duels.DuelsPlugin
+description: Duels 1v1, parties (FFA / équipes), file d'attente et arènes copiées à la volée.
+authors: [Duels]
+load: POSTWORLD
+
+commands:
+  duel:
+    description: Défier un joueur (ou une party) en duel.
+    usage: /duel <joueur> [kit] [arène] | /duel accept|deny <joueur>
+  party:
+    description: Gérer sa party.
+    aliases: [p]
+    usage: /party [create|invite|accept|leave|kick|promote|disband|open|info|chat|ffa|split|duel]
+  queue:
+    description: Ouvrir le menu des files d'attente.
+    aliases: [play, jouer]
+    usage: /queue [kit]
+  leave:
+    description: Quitter la file, le match ou le mode spectateur.
+    aliases: [quitter]
+  spectate:
+    description: Regarder un match.
+    aliases: [spec]
+    usage: /spectate [joueur]
+  stats:
+    description: Voir les statistiques.
+    usage: /stats [joueur]
+  arena:
+    description: Gestion des arènes.
+    aliases: [darena]
+    permission: duels.admin
+  dkit:
+    description: Gestion des kits.
+    aliases: [duelkit]
+    permission: duels.admin
+  duels:
+    description: Commandes générales Duels.
+    usage: /duels [lobby|setlobby|reload]
+
+permissions:
+  duels.admin:
+    description: Administration complète (arènes, kits, lobby, reload) et contournement des restrictions.
+    default: op
